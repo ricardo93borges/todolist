@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './App.css';
+import { addTodo } from './reducers/todos/action-creators';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <input type='text' />
+        <form onSubmit={this.props.handleAddTodo} >
+          <input type='text' name='todo' />
+          <button type='submit'>ADD</button>
+        </form>
 
         <ul>
-          <li style={{textDecoration:'line-through'}}>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          {this.props.todos.map( (todo) => (
+            <li 
+              key={todo.id} 
+              style={{textDecoration:todo.completed ? 'line-through' : 'none'}}>
+              {todo.text}
+            </li>  
+          ))}
         </ul>
 
         <div>
@@ -23,4 +32,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  todos: state
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  handleAddTodo: (e) => {
+    e.preventDefault()
+    dispatch(addTodo(e.target.todo.value))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
