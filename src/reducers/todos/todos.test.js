@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import deepFreeze from 'deep-freeze'
-import todos from './index'
+import todos, { initialState } from './index'
 import { ADD_TODO, TOGGLE_TODO } from './actions'
 
 it('should todo be a function', () => {
@@ -51,5 +51,22 @@ it('should toggle first todo', () => {
         {id:1,text:'Ho', completed:false}
     ]
 
+    expect(todos(before, action)).to.be.deep.equal(after)
+})
+
+it('should return latest state when action is unknown', () => {
+    const before = deepFreeze([{id:0,text:'Hey', completed:false}])
+    const action = {
+        type: 'UNKNOWN',
+        payload: {id:0, text:'Hey'}
+    }
+    const after = deepFreeze([{id:0,text:'Hey', completed:false}])
+    expect(todos(before, action)).to.be.deep.equal(after)
+})
+
+it('should return inital state when state before is undefined', () => {
+    const before = undefined
+    const action = {type: 'UNKNOWN'}
+    const after = initialState
     expect(todos(before, action)).to.be.deep.equal(after)
 })
