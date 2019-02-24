@@ -7,7 +7,7 @@ const FilterLink = ({action, activeFilter, children, onClick}) => {
 
     return (
         <component.tag
-            href={Component.href}
+            href={component.href}
             style={{marginRight:10}}
             onClick={onClick}>
             {children}
