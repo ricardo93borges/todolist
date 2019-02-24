@@ -2,18 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { toggleTodo } from '../../reducers/todos/action-creators';
 import * as filterActions from '../../reducers/visibility-filter/actions'
+import { List, ListItem } from './style'
 
 const TodoList = ({todos, activeFilter, handleToggleTodo}) => (
-    <ul>
+    <List>
         {getVisibleTodos(todos, activeFilter).map( (todo) => (
-        <li 
+        <ListItem 
             key={todo.id} 
             onClick={handleToggleTodo(todo.id)}
-            style={{textDecoration:todo.completed ? 'line-through' : 'none'}}>
+            completed={todo.completed}>
             {todo.text}
-        </li>  
+        </ListItem>
         ))}
-    </ul>
+    </List>
 )
 
 const getVisibleTodos = (todos, activeFilter) => {

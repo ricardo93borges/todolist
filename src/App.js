@@ -3,15 +3,16 @@ import './App.css';
 import Form from './components/form/index'
 import TodosList from './components/todos-list/index'
 import Filter from './components/filter/index'
+import { StyledApp } from './style'
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <StyledApp>
         <Form/>
         <TodosList/>
         <Filter/>
-      </div>
+      </StyledApp>
     );
   }
 }

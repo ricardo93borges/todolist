@@ -1,7 +1,10 @@
 import { ADD_TODO, TOGGLE_TODO } from "./actions";
 import createReducer from '../create-reducer'
 
-export const initialState = []
+export const initialState = [
+    {id:0, text:'learn react native', completed: true},
+    {id:1, text:'learn styled components', completed: false},
+]
 
 const todos = createReducer(initialState, {
     [ADD_TODO]: (state, action) => state.concat({

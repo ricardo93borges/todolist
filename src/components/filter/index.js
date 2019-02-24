@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import * as actions from '../../reducers/visibility-filter/actions'
 import { setVisibilityFilter } from '../../reducers/visibility-filter/action-creators'
 import FilterLink from './filter-link'
+import { StyledFilter } from './style'
 
 const Filter = ({activeFilter, handleFilter}) => (
-    <div>
-        <h3>Show</h3>
+    <StyledFilter>
         {filterItems.map( item => {
             return <FilterLink 
                     key={item.action} 
@@ -16,7 +16,7 @@ const Filter = ({activeFilter, handleFilter}) => (
                         {item.label}
                     </FilterLink>                    
         })}
-    </div>
+    </StyledFilter>
 )
 
 const filterItems = [

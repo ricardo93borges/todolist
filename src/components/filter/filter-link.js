@@ -1,18 +1,16 @@
 import React from 'react'
+import { Link, Span } from './style'
 
 const FilterLink = ({action, activeFilter, children, onClick}) => {
-    const span = {tag: 'span'}
-    const a = {tag: 'a', href:'#', onClick}
-    const component = action === activeFilter ? span : a
-
-    return (
-        <component.tag
-            href={component.href}
-            style={{marginRight:10}}
-            onClick={onClick}>
-            {children}
-        </component.tag>
-    )
+    if (action === activeFilter){
+        return <Span>{ children }</Span>
+    }else{
+        return (
+            <Link href='#' onClick={onClick}>
+                {children}
+            </Link>
+        )
+    }
 }
   
 export default FilterLink
