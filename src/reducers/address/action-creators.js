@@ -1,6 +1,6 @@
 import { UPDATE_ADDRESS } from "./actions";
 
-export const updateAddress = (address) => ({
+export const updateAddress = (data) => ({
     type: UPDATE_ADDRESS,
-    payload: address
+    payload: data
 })
