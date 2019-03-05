@@ -5,10 +5,6 @@ import { SHOW_COMPLETED, SET_VISIBILITY_FILTER, SHOW_ALL, SHOW_ACTIVE } from './
 
 describe('visibilityFilter reducer tests', () => {
 
-    it('visibilityFilter should be a function', () => {
-        expect(visibilityFilter).to.be.a('function')
-    })
-
     it('should show all todos', () => {
         const before = SHOW_COMPLETED
         const action = {
@@ -38,25 +34,4 @@ describe('visibilityFilter reducer tests', () => {
         const after = SHOW_ACTIVE
         expect(visibilityFilter(before, action)).to.be.equal(after)
     })
-
-    it('should return lastest state when action is unknown', () => {
-        const before = SHOW_COMPLETED
-        const action = {
-            type: 'UNKNOWN',
-            payload: {filter: SHOW_ALL}
-        }
-        const after = SHOW_COMPLETED
-        expect(visibilityFilter(before, action)).to.be.equal(after)
-    })
-
-    it('should return initial state when latest state is undefined', () => {
-        const before = undefined
-        const action = {
-            type: 'UNKNOWN',
-            payload: {filter: SHOW_ALL}
-        }
-        const after = initialState
-        expect(visibilityFilter(before, action)).to.be.equal(after)
-    })
-
 })

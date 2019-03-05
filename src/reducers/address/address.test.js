@@ -13,10 +13,6 @@ describe('Address reducer tests', () => {
         status:1
     }
 
-    it('should todo be a function', () => {
-        expect(address).to.be.a('function')
-    })
-
     it('should action UPDATE_ADDRESS update address', () => {
         const before = initialState
 
