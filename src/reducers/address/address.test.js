@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import address, { initialState } from './index'
-import { UPDATE_ADDRESS } from './actions'
+import { SUCCESS, FETCHING } from "./actions";
 
 describe('Address reducer tests', () => {
 
@@ -10,14 +10,15 @@ describe('Address reducer tests', () => {
         code:'new code',
         district:'new district',
         state:'new state',
-        status:1
+        status:1,
+        isFetching:false
     }
 
-    it('should action UPDATE_ADDRESS update address', () => {
+    it('should action SUCCESS update address', () => {
         const before = initialState
 
         const action = {
-            type: UPDATE_ADDRESS,
+            type: SUCCESS,
             payload: newAddress
         }
         
